@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HabitTracker.App/TaskPlanning.App.csproj" />
+  <Project Path="SmartTracker/TaskPlanning.Core.csproj" />
+</Solution>
