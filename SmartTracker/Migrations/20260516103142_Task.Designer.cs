@@ -12,8 +12,8 @@ using SmartTracker;
 namespace TaskPlanning.Core.Migrations
 {
     [DbContext(typeof(HabitTrackerContext))]
-    [Migration("20260513172647_lol")]
-    partial class lol
+    [Migration("20260516103142_Task")]
+    partial class Task
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,9 +88,20 @@ namespace TaskPlanning.Core.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

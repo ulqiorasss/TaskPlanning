@@ -5,46 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskPlanning.App"
         mc:Ignorable="d"
-       Title="Задача" Height="360" Width="480" 
-        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Создание новой задачи" FontSize="18" Margin="10,0,0,15"/>
-        <TextBlock Grid.Row="1" Text="Название" Margin="10,0,0,4" FontSize="12" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="2" x:Name="TitleTextBox" Height="26" Margin="10,0,10,12" 
-                 Background="White" BorderBrush="Black" VerticalContentAlignment="Center" Padding="5,0"/>
-        <TextBlock Grid.Row="3" Text="Описание" Margin="10,0,0,4" FontSize="12" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="4" x:Name="DescriptionTextBox" Height="70" Margin="10,0,10,15" 
-                 Background="White" BorderBrush="Black" TextWrapping="Wrap" AcceptsReturn="True" Padding="5"/>
-        <Grid Grid.Row="5" Margin="10,0,10,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="130"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="130"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+       Title="Задачи" Height="500" Width="440" 
+        WindowStartupLocation="CenterOwner" Background="#F8F9FA">
+    <Border Background="White" CornerRadius="8" Margin="20" BorderBrush="#E0E0E0" BorderThickness="1">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Direction="270" ShadowDepth="3" Opacity="0.1"/>
+        </Border.Effect>
+
+        <Grid Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Срок" VerticalAlignment="Center" Margin="0,0,10,0"/>
-            <DatePicker Grid.Column="1" Grid.Row="0" x:Name="DueDatePicker" Height="26" 
-                        Background="White" BorderBrush="Black" VerticalContentAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="0" Text="Тег" VerticalAlignment="Center" Margin="15,0,10,0"/>
-            <TextBox Grid.Column="3" Grid.Row="0" x:Name="TagTextBox" Height="26"
-         Background="White" BorderBrush="Black" VerticalContentAlignment="Center" Padding="5,0"/>
-            <Button Grid.Column="4" Grid.Row="1" Content="Добавить задачу" x:Name="SaveButton"
-                    Click="SaveButton_Click" Width="130" Height="28" 
-                    HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                    Background="White"  IsDefault="True"/>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Окно задачи" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Foreground="#212529"
+                               HorizontalAlignment="Center" 
+                               Margin="0,0,0,20"/>
+                    <StackPanel Margin="0,0,0,12">
+                        <TextBlock Text="Название задачи" FontSize="12" FontWeight="SemiBold" Foreground="#6C757D" Margin="0,0,0,4"/>
+                        <TextBox x:Name="TitleTextBox"
+                                 Height="32" 
+                                 VerticalContentAlignment="Center"
+                                 Padding="5,0,5,0"
+                                 Background="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,12">
+                        <TextBlock Text="Описание задачи" FontSize="12" FontWeight="SemiBold" Foreground="#6C757D" Margin="0,0,0,4"/>
+                        <TextBox x:Name="DescriptionTextBox"
+                                 Height="80" 
+                                 TextWrapping="Wrap" 
+                                 AcceptsReturn="True"
+                                 Padding="5"
+                                 Background="White" BorderBrush="Black"/>
+                    </StackPanel>
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Срок выполнения" FontSize="12" FontWeight="SemiBold" Foreground="#6C757D" Margin="0,0,0,4"/>
+                            <DatePicker x:Name="DueDatePicker" 
+                                        Height="32" 
+                                        VerticalContentAlignment="Center"
+                                        Background="White" BorderBrush="Black"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Text="Тег (Категория)" FontSize="12" FontWeight="SemiBold" Foreground="#6C757D" Margin="0,0,0,4"/>
+                            <TextBox x:Name="TagTextBox" 
+                                     Height="32" 
+                                     VerticalContentAlignment="Center"
+                                     Padding="5,0,5,0"
+                                     Background="White" BorderBrush="Black"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Button Grid.Row="1" 
+                    Content="Сохранить" 
+                    x:Name="SaveButton"
+                    Click="SaveButton_Click" 
+                    Height="38" 
+                    Background="#0D6EFD" 
+                    Foreground="White"
+                    FontWeight="SemiBold"
+                    FontSize="14"
+                    Cursor="Hand"
+                    IsDefault="True"
+                    Margin="0,15,0,0">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

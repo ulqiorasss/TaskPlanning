@@ -1,6 +1,5 @@
-﻿using HabitTracker.App.ViewModels;
-using SmartTracker;
-using SmartTracker.Models;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,24 +8,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HabitTracker.App
+namespace TaskPlanning.App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для LoginWindow.xaml
     /// </summary>
-    public partial class PersonSelectionWindow : Window
+    public partial class LoginWindow : Window
     {
-        public PersonSelectionWindow()
+        public LoginWindow()
         {
             InitializeComponent();
-            DataContext = new PersonSelectionViewModel();
-
+            this.DataContext = new TaskPlanning.App.ViewModels.LoginViewModel();
         }
-
-
-
     }
 }
